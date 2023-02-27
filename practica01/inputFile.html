@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Factura falsa</title>
+  </head>
+  <body>
+    <input type="file" id="fileUp" accept=".xml" />
+    <p id="parrafo"></p>
+    <script>
+      //console.log(document.getElementById('fileUp').files[0].name);
+      
+      if (window.XMLHttpRequest) {
+        xhttp = new XMLHttpRequest();
+      }
+      xhttp.open("GET", "factVerdadera.xml", false);
+      xhttp.send();
+      xmlDoc = xhttp.responseXML;
+
+      var tagEmisor = xmlDoc.getElementsByTagName("cfdi:Emisor")[0];
+      var rfcEmisor =
+        tagEmisor.getAttribute("rfc") || tagEmisor.getAttribute("Rfc");
+
+      var tagReceptor = xmlDoc.getElementsByTagName("cfdi:Receptor")[0];
+      var rfcReceptor =
+        tagReceptor.getAttribute("rfc") || tagReceptor.getAttribute("Rfc");
+
+      var tagTotal = xmlDoc.getElementsByTagName("cfdi:Comprobante")[0];
+      var tt = tagTotal.getAttribute("total") || tagTotal.getAttribute("Total");
+
+      var tagId = xmlDoc.getElementsByTagName("tfd:TimbreFiscalDigital")[0];
+      var id = tagId.getAttribute("UUID") || tagId.getAttribute("uuid");
+
+      document.getElementById("parrafo").innerHTML =
+        "RFC Emisor: " +
+        rfcEmisor +
+        "<br>RFC Receptor: " +
+        rfcReceptor +
+        "<br>Total: " +
+        tt +
+        "<br>UDDI: " +
+        id;
+      console.log(rfcEmisor);
+      console.log(rfcReceptor);
+      console.log(tt);
+      console.log(id);
+      console.log(xmlDoc);
+      console.log(xmlDoc.getElementsByTagName("cfdi:Emisor")[0]);
+    </script>
+  </body>
+</html>
