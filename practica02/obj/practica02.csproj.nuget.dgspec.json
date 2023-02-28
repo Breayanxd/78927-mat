@@ -1,30 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\liami\\OneDrive\\Escritorio\\Semestre 6\\Tecnologías para la Integración de Soluciones\\78927-mat\\practica02\\practica02.csproj": {}
+    "C:\\Users\\breay\\OneDrive\\Documentos\\Escuela\\6to Semestre\\Tecnologías Para La Integración De Soluciones\\78927-mat\\practica02\\practica02.csproj": {}
   },
   "projects": {
-    "C:\\Users\\liami\\OneDrive\\Escritorio\\Semestre 6\\Tecnologías para la Integración de Soluciones\\78927-mat\\practica02\\practica02.csproj": {
+    "C:\\Users\\breay\\OneDrive\\Documentos\\Escuela\\6to Semestre\\Tecnologías Para La Integración De Soluciones\\78927-mat\\practica02\\practica02.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\liami\\OneDrive\\Escritorio\\Semestre 6\\Tecnologías para la Integración de Soluciones\\78927-mat\\practica02\\practica02.csproj",
+        "projectUniqueName": "C:\\Users\\breay\\OneDrive\\Documentos\\Escuela\\6to Semestre\\Tecnologías Para La Integración De Soluciones\\78927-mat\\practica02\\practica02.csproj",
         "projectName": "practica02",
-        "projectPath": "C:\\Users\\liami\\OneDrive\\Escritorio\\Semestre 6\\Tecnologías para la Integración de Soluciones\\78927-mat\\practica02\\practica02.csproj",
-        "packagesPath": "C:\\Users\\liami\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\liami\\OneDrive\\Escritorio\\Semestre 6\\Tecnologías para la Integración de Soluciones\\78927-mat\\practica02\\obj\\",
+        "projectPath": "C:\\Users\\breay\\OneDrive\\Documentos\\Escuela\\6to Semestre\\Tecnologías Para La Integración De Soluciones\\78927-mat\\practica02\\practica02.csproj",
+        "packagesPath": "C:\\Users\\breay\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\breay\\OneDrive\\Documentos\\Escuela\\6to Semestre\\Tecnologías Para La Integración De Soluciones\\78927-mat\\practica02\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\liami\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\breay\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net6.0"
+          "net7.0"
         ],
         "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
+          "net7.0": {
+            "targetAlias": "net7.0",
             "projectReferences": {}
           }
         },
@@ -35,8 +35,8 @@
         }
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
+        "net7.0": {
+          "targetAlias": "net7.0",
           "dependencies": {
             "SoapCore": {
               "target": "Package",
@@ -62,7 +62,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.406\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     }
