@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<s:schema attributeFormDefault="qualified" elementFormDefault="qualified" xmlns:s="http://www.w3.org/2001/XMLSchema">
+	<s:element name="saludarRequest">
+		<s:complexType>
+			<s:sequence>
+				<s:element name="nombre" type="s:string" />
+			</s:sequence>
+		</s:complexType>
+	</s:element>
+
+	<s:element name="saludarResponse">
+		<s:complexType>
+			<s:sequence>
+				<s:element name="return" type="s:string" />
+			</s:sequence>
+		</s:complexType>
+	</s:element>
+
+	<s:element name="buscarSaludosRequest" />
+
+	<s:element name="buscarSaludosResponse">
+		<s:complexType>
+			<s:sequence>
+				<s:element name="return" type="s:string"/>
+			</s:sequence>
+		</s:complexType>
+	</s:element>
+
+	<s:element name="modificarSaludoRequest">
+		<s:complexType>
+			<s:sequence>
+				<s:element name="id" type="s:int"/>
+				<s:element name="saludo" type="s:string"/>
+			</s:sequence>
+		</s:complexType>
+	</s:element>
+
+	<s:element name="modificarSaludoResponse">
+		<s:complexType>
+			<s:sequence>
+				<s:element name="return" type="s:string"/>
+			</s:sequence>
+		</s:complexType>
+	</s:element>
+
+	<s:element name="eliminarSaludoRequest">
+		<s:complexType>
+			<s:sequence>
+				<s:element name="id" type="s:int"/>
+			</s:sequence>
+		</s:complexType>
+	</s:element>
+
+	<s:element name="eliminarSaludoResponse">
+		<s:complexType>
+			<s:sequence>
+				<s:element name="return" type="s:string"/>
+			</s:sequence>
+		</s:complexType>
+	</s:element>
+</s:schema>
