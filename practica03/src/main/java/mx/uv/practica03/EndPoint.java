@@ -56,7 +56,7 @@ public class EndPoint {
     @ResponsePayload
     public PedirResponse Pedir() {
         PedirResponse response= new PedirResponse();
-        String todos="He saludado a: ";
+        String todos="";
         for (int x = 0; x < nombres.size(); x++) {
             todos=todos+ nombres.get(x) +", ";
         }
