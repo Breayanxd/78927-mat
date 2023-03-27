@@ -44,17 +44,15 @@ public class EndPoint {
 
     @ResponsePayload
     public ModificarResponse Modificar( @RequestPayload  ModificarRequest peticion) {
-        boolean band = false;
         ModificarResponse response= new ModificarResponse();
-        for (int x = 0; x < nombres.size(); x++) {
-            if (peticion.getNombreOld().equals(nombres.get(x))){
-                nombres.set(x,peticion.getNombreNew());
-                response.setRespuesta(peticion.getNombreOld()+" ha sido cambiado por "+nombres.get(x));
-                band = true;
-            }
-        }
-        if(!band){
-            response.setRespuesta("Valor no encontrado");
+        //BD
+        if(iSaludador.findById(peticion.getId()).isPresent()){
+            Saludador saludador = iSaludador.findById(peticion.getId()).get();
+            saludador.setNombre(peticion.getNombre());
+            response.setRespuesta("El nombre del id "+ peticion.getId() +" ha sido cambiado por "+peticion.getNombre());
+            iSaludador.save(saludador);
+        }else{
+            response.setRespuesta("El registro con id "+ peticion.getId() +" no ha sido encontrado en la BD");    
         }
         return response;
     }
@@ -77,11 +75,11 @@ public class EndPoint {
     @ResponsePayload
     public EliminarResponse Eliminar(@RequestPayload EliminarRequest peticion) {
         EliminarResponse response= new EliminarResponse();
-        for (int x = 0; x < nombres.size(); x++) {
-          if(peticion.getNombre().equals(nombres.get(x))){
-            nombres.remove(x);
-            response.setRespuesta(peticion.getNombre()+" eliminado con éxito");
-          }
+        if(iSaludador.findById(peticion.getId()).isPresent()){
+            response.setRespuesta("El registro del id "+ peticion.getId() +" ha sido elimiando");
+            iSaludador.deleteById(peticion.getId());
+        }else{
+            response.setRespuesta("El registro con id "+ peticion.getId() +" no ha sido encontrado en la BD");    
         }
         return response;
     }
