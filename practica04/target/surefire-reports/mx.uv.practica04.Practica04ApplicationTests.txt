@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: mx.uv.practica04.Practica04ApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.539 s - in mx.uv.practica04.Practica04ApplicationTests
