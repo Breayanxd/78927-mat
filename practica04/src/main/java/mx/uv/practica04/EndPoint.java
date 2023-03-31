@@ -13,6 +13,8 @@ import https.t4is_uv_mx.saludos.EliminarRequest;
 import https.t4is_uv_mx.saludos.EliminarResponse;
 import https.t4is_uv_mx.saludos.ModificarRequest;
 import https.t4is_uv_mx.saludos.ModificarResponse;
+import https.t4is_uv_mx.saludos.MostrarResponse;
+import https.t4is_uv_mx.saludos.PedirRequest;
 import https.t4is_uv_mx.saludos.PedirResponse;
 import https.t4is_uv_mx.saludos.SaludarRequest;
 import https.t4is_uv_mx.saludos.SaludarResponse;
@@ -40,6 +42,22 @@ public class EndPoint {
         return response;
     }
 
+    @PayloadRoot(localPart = "MostrarRequest", namespace = "https://t4is.uv.mx/saludos")
+    
+    @ResponsePayload
+    public MostrarResponse Mostrar() {
+        MostrarResponse response = new MostrarResponse();
+        String cad = "";
+        for (Saludador saludador : iSaludador.findAll()) {
+            String registro = "id: " +String.valueOf(saludador.getId())+" nombre: "+saludador.getNombre()+" ; ";
+            cad += registro;
+        }
+        response.setRespuesta(cad);
+        //persistencia a la bd
+        return response;
+    }
+
+
     @PayloadRoot(localPart = "ModificarRequest", namespace="https://t4is.uv.mx/saludos")
 
     @ResponsePayload
@@ -60,13 +78,14 @@ public class EndPoint {
     @PayloadRoot(localPart = "PedirRequest", namespace="https://t4is.uv.mx/saludos")
 
     @ResponsePayload
-    public PedirResponse Pedir() {
-        PedirResponse response= new PedirResponse();
-        String todos="";
-        for (int x = 0; x < nombres.size(); x++) {
-            todos=todos+ nombres.get(x) +", ";
+    public PedirResponse Pedir(@RequestPayload PedirRequest peticion) {
+        PedirResponse response = new PedirResponse();
+        if(iSaludador.findById(peticion.getId()).isPresent()){
+            Saludador saludador = iSaludador.findById(peticion.getId()).get();
+            response.setRespuesta("Nombre: " + saludador.getNombre());
+        }else{
+            response.setRespuesta("El registro con id "+peticion.getId()+" no existe en la BD");
         }
-        response.setRespuesta(todos);
         return response;
     }
 
