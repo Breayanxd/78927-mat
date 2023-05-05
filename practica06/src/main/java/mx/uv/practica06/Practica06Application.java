@@ -5,16 +5,26 @@ import java.util.List;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 
+
+
 @RestController
 @SpringBootApplication
 public class Practica06Application {
+	List<Personaje> listaPersonajes = new ArrayList<Personaje>();
 	
-	public static void main(String[] args) {
+	public Practica06Application(){
+		listaPersonajes.add(new Personaje(0,"Bennet", "Mondstand", "Pyro"));
+		listaPersonajes.add(new Personaje(1,"Itto", "Inazuma", "Geo"));
+		listaPersonajes.add(new Personaje(2,"Fishl", "Mondstand", "Electro"));
+	}
+	public static void main(String[] args) {	
 		SpringApplication.run(Practica06Application.class, args);
 	}
 	
@@ -62,5 +72,46 @@ public class Practica06Application {
 	@RequestMapping(value = "/saludar", method = RequestMethod.POST)
 	public String saludarPost(){
 		return "<h1>hola desde POST</h1>";
+	}
+	@RequestMapping(value = "/personajes", method = RequestMethod.GET)
+	public List<Personaje> getPersonajes() {
+		return listaPersonajes;
+	}
+
+	@RequestMapping(value = "/personajes/{id}", method = RequestMethod.GET)
+	public Personaje getPersonaje(@PathVariable int id) {
+		Personaje response = listaPersonajes.get(id);
+		return response;
+	}
+
+	@RequestMapping(value = "/personajes", method = RequestMethod.POST)
+	public String postPersonaje(@RequestBody Personaje personaje){
+		if(personaje != null){
+			listaPersonajes.add(personaje);
+			return "{\"message\":\"Success\"}";
+		}else{
+			return "{\"message\":\"Failed\"}";
+		}
+	}
+
+	@RequestMapping(value = "/personajes/{id}", method = RequestMethod.DELETE)
+	public String deletePersonaje(@PathVariable int id){
+		listaPersonajes.remove(id);
+		return "{\"message\":\"Success\"}";
+	}
+
+	@RequestMapping(value = "/personajes/{id}", method = RequestMethod.PUT)
+	public String putPersonaje(@PathVariable int id, @RequestBody Personaje personaje){
+		String response = "{\"message\":\"Failed\"}";
+		Personaje pNew = new Personaje();
+		pNew.setId(personaje.getId());
+		pNew.setNombre(personaje.getNombre());
+		pNew.setCiudad(personaje.getCiudad());
+		pNew.setElemento(personaje.getElemento());
+		if(listaPersonajes.contains(personaje)){
+			listaPersonajes.set(id, pNew);
+			response = "{\"message\":\"Success\"}";
+		}
+		return response;
 	}
 }
